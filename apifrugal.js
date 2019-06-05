@@ -8,7 +8,6 @@ var port = process.env.PORT || 5000;
 
 // La variable mongoose nous permettra d'utiliser les fonctionnalités du module mongoose.
 var mongoose = require('mongoose'); 
-
 // Ces options sont recommandées par mLab pour une connexion à la base
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
@@ -37,7 +36,7 @@ app.use(bodyParser.json());
 var questionSchema = mongoose.Schema({
   categorie: String, 
   question: String, 
-  date: date,
+
 }); 
 
 var Question = mongoose.model('Question', questionSchema);
@@ -92,7 +91,7 @@ myRouter.route('/')
       res.json({message : "Bienvenue sur notre API FAQ ", methode : req.method});
 });
 
-myRouter.route('/piscines/:piscine_id')
+myRouter.route('/questions/:question_id')
 .get(function(req,res){ 
           //Mongoose prévoit une fonction pour la recherche d'un document par son identifiant
           Question.findById(req.params.question_id, function(err, question) {
