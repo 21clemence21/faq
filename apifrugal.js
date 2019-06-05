@@ -3,8 +3,8 @@
 var express = require('express');
  
 // Nous définissons ici les paramètres du serveur.
-var hostname = 'localhost'; 
-var port = 3000; 
+var hostname = require('https'); 
+var port = process.env.PORT || 5000; 
  
 // La variable mongoose nous permettra d'utiliser les fonctionnalités du module mongoose.
 var mongoose = require('mongoose'); 
@@ -13,7 +13,7 @@ var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 
 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
  
 //URL de notre base
-var urlmongo = "mongodb://127.0.0.1:27017/restfrugaldb"; 
+var urlmongo = "mongodb://heroku_rc37f26w:1gn8agb6eokrgdlahjm4tdutp8@ds133187.mlab.com:33187/heroku_rc37f26w"; 
  
 // Nous connectons l'API à notre base de données
 mongoose.connect(urlmongo, options);
